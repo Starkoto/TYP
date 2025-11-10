@@ -19,7 +19,7 @@ class Node:
     
 class Road:
     
-    def __init__(self, road_id: str, start_node: Node, end_node: Node, speed_limit: float, capacity: int):
+    def __init__(self, road_id: str, start_node: Node, end_node: Node, speed_limit: float, capacity: int, base_stress: float = 0.0):
 
         self.id = road_id
         self.start = start_node
@@ -30,6 +30,7 @@ class Road:
         self.distance = start_node.euc_distance(end_node)
         self.vehicles = []
         self.current_speed = speed_limit
+        self.base_stress = base_stress
 
     def get_density(self) -> float:
         return len(self.vehicles) / self.capacity
@@ -46,7 +47,13 @@ class Road:
             self.current_speed = (0.1 * self.speed_limit) / density
 
     def get_stress_level(self):
-        pass
+        density = self.get_density()
+        speed_ratio = self.current_speed / self.speed_limit
+        
+        congestion_stress = density * (1 - speed_ratio)
+        
+        total_stress = self.base_stress + congestion_stress
+        return min(total_stress, 1.0)
 
     def add_vehicle(self, vehicle):
         self.vehicles.append(vehicle)
@@ -119,7 +126,8 @@ class TrafficNetwork:
                 start_node=start_node,
                 end_node=end_node,
                 speed_limit=road_data['speed_limit'],
-                capacity=road_data['capacity']
+                capacity=road_data['capacity'],
+                base_stress=road_data.get('base_stress', 0.0)
             )
             network.add_road(road)
         
