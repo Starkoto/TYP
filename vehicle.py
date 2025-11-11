@@ -1,6 +1,5 @@
 from typing import List
 
-
 class Vehicle:
     
     def __init__(self, vehicle_id: str, route: List):
@@ -15,8 +14,19 @@ class Vehicle:
         return None
     
     def update_position(self, time_step: float):
-        # TODO: Implement movement logic
-        pass
+        if self.has_reached_destination():
+            return
+        road = self.get_current_road()
+        speed = road.current_speed
+        distance_traveled = speed * time_step
+
+        progress = distance_traveled / road.distance
+        self.position += progress
+
+        if self.position >= 1.0:
+            self.position = 0.0
+            self.route_index += 1
+
     
     def has_reached_destination(self) -> bool:
         return self.route_index >= len(self.route)
