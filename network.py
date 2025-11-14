@@ -54,6 +54,12 @@ class Road:
         
         total_stress = self.base_stress + congestion_stress
         return min(total_stress, 1.0)
+    
+    def has_space(self) -> bool:
+        return len(self.vehicles) < self.capacity
+    
+    def is_at_capacity(self) -> bool:
+        return len(self.vehicles) >= self.capacity
 
     def add_vehicle(self, vehicle):
         self.vehicles.append(vehicle)
