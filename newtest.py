@@ -111,10 +111,6 @@ class TestVehicle(unittest.TestCase):
         self.assertTrue(vehicle.has_reached_destination())
 
     def test_different_roads_converging(self):
-        """
-        Test vehicles from different roads trying to enter the same road.
-        This simulates an intersection where multiple roads feed into one.
-        """
         # Create network: RoadA → RoadC
         #                 RoadB → RoadC
         #                 (both feeding into RoadC)
