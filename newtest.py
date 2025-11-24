@@ -110,6 +110,72 @@ class TestVehicle(unittest.TestCase):
         
         self.assertTrue(vehicle.has_reached_destination())
 
+    def test_different_roads_converging(self):
+        """
+        Test vehicles from different roads trying to enter the same road.
+        This simulates an intersection where multiple roads feed into one.
+        """
+        # Create network: RoadA → RoadC
+        #                 RoadB → RoadC
+        #                 (both feeding into RoadC)
+        
+        road_a = Road("RoadA", Node("A", 0, 0), Node("C", 100, 0), 
+                      speed_limit=50, capacity=10)
+        road_b = Road("RoadB", Node("B", 0, 100), Node("C", 100, 0), 
+                      speed_limit=50, capacity=10)
+        road_c = Road("RoadC", Node("C", 100, 0), Node("D", 200, 0), 
+                      speed_limit=50, capacity=5)
+        
+        # Fill road_c to 4/5 (one space left)
+        road_c.vehicles = ["blocker1", "blocker2", "blocker3", "blocker4"]
+        self.assertEqual(len(road_c.vehicles), 4)
+        self.assertTrue(road_c.has_space())
+        
+        # Create Car1 from RoadA
+        car1 = Vehicle("Car1", route=[road_a, road_c])
+        road_a.add_vehicle(car1)
+        car1.position = 1.0  # At end of RoadA
+        
+        # Create Car2 from RoadB
+        car2 = Vehicle("Car2", route=[road_b, road_c])
+        road_b.add_vehicle(car2)
+        car2.position = 1.0  # At end of RoadB
+        
+        # Create Car3 also from RoadA
+        car3 = Vehicle("Car3", route=[road_a, road_c])
+        road_a.add_vehicle(car3)
+        car3.position = 1.0
+        
+        # List order determines priority!
+        vehicles = [car1, car2, car3]
+        
+        # Simulate updates
+        for vehicle in vehicles:
+            vehicle.update_position(time_step=0.1)
+        
+        # Only 1 vehicle should have entered (the first in the list)
+        self.assertEqual(len(road_c.vehicles), 5, 
+                        "RoadC should be at capacity with 5 vehicles")
+        self.assertTrue(road_c.is_at_capacity())
+        
+        # Car1 should have entered (first in list)
+        self.assertEqual(car1.route_index, 1, 
+                        "Car1 (first in list) should have entered RoadC")
+        self.assertFalse(car1.waiting)
+        
+        # Car2 and Car3 should be waiting (on their original roads)
+        self.assertEqual(car2.route_index, 0, 
+                        "Car2 should still be on RoadB")
+        self.assertTrue(car2.waiting, "Car2 should be waiting")
+        
+        self.assertEqual(car3.route_index, 0, 
+                        "Car3 should still be on RoadA")
+        self.assertTrue(car3.waiting, "Car3 should be waiting")
+        
+        # Verify they're on different source roads
+        self.assertIn(car2, road_b.vehicles, "Car2 should still be on RoadB")
+        self.assertIn(car3, road_a.vehicles, "Car3 should still be on RoadA")
+
 
 if __name__ == '__main__':
     unittest.main()
