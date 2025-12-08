@@ -1,13 +1,31 @@
-from typing import List
+from typing import List, Optional
 
 class Vehicle:
     
-    def __init__(self, vehicle_id: str, route: List):
+    def __init__(self, vehicle_id: str, route: List = None, start_node: str = None, goal_node: str = None, pathfinder = None):
+
         self.id = vehicle_id
-        self.route = route
-        self.route_index = 0  # the road its currently on
-        self.position = 0.0   # progress along road
+
+        if route is not None:
+            self.route = route
+            self.start_node = route[0].start.id if route else None
+            self.goal_node = route[-1].end.id if route else None
+        
+        elif start_node and goal_node and pathfinder:
+            self.start_node = start_node
+            self.goal_node = goal_node
+            self.route = pathfinder.find_path(start_node, goal_node)
+            
+            if self.route is None:
+                raise ValueError(f"No path found from {start_node} to {goal_node}")
+        
+        else:
+            raise ValueError("Must provide either 'route' OR (start_node, goal_node, pathfinder)")
+        
+        self.route_index = 0
+        self.position = 0.0
         self.waiting = False
+        self.pathfinder = pathfinder
     
     def get_current_road(self):
         if self.route_index < len(self.route):
@@ -20,6 +38,9 @@ class Vehicle:
             return
         
         road = self.get_current_road()
+
+        if road is None: 
+            return
 
         if self.waiting:
             if self.route_index + 1 < len(self.route):
