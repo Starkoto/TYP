@@ -6,12 +6,12 @@ class Vehicle:
 
         self.id = vehicle_id
 
-        if route is not None:
+        if route is not None: # so you can set custom paths
             self.route = route
             self.start_node = route[0].start.id if route else None
             self.goal_node = route[-1].end.id if route else None
         
-        elif start_node and goal_node and pathfinder:
+        elif start_node and goal_node and pathfinder: #A* handles the path
             self.start_node = start_node
             self.goal_node = goal_node
             self.route = pathfinder.find_path(start_node, goal_node)
