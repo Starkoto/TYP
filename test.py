@@ -18,8 +18,8 @@ print ('///////////////////////////')
 
 ################################################Congestion test#############################################
 node_a = Node("A", 0, 0)
-node_b = Node("B", 100, 0)
-road = Road("R1", node_a, node_b, speed_limit=60, capacity=10)
+node_b = Node("B", 1000, 0)  
+road = Road("R1", node_a, node_b, speed_limit_kmh=60, capacity=10) 
 
 print(f"Empty road speed: {road.current_speed}")  #should be 60
 
@@ -37,7 +37,7 @@ print ('///////////////////////////')
 ############################################################################################################
 
 ##############################################Capacity test#################################################
-road = Road("R1", Node("A", 0, 0), Node("B", 100, 0), speed_limit=50, capacity=5) #create road with capacity 5
+road = Road("R1", Node("A", 0, 0), Node("B", 1000, 0), speed_limit_kmh=50, capacity=5) 
 
 print(f"Empty road has space: {road.has_space()}")  #should be true
 
@@ -53,7 +53,7 @@ print ('///////////////////////////')
 #############################################################################################################
 
 #######################################Vehicle movement test#################################################
-road1 = Road("R1", Node("A", 0, 0), Node("B", 100, 0), speed_limit=50, capacity=10)
+road1 = Road("R1", Node("A", 0, 0), Node("B", 100, 0), speed_limit_kmh=50, capacity=10)  
 
 vehicle = Vehicle("test", route=[road1])
 road1.add_vehicle(vehicle)
@@ -71,8 +71,8 @@ print ('///////////////////////////')
 #############################################################################################################
 
 #######################################Vehicle waiting test##################################################
-road1 = Road("R1", Node("A", 0, 0), Node("B", 100, 0), speed_limit=50, capacity=10)
-road2 = Road("R2", Node("B", 0, 0), Node("C", 100, 0), speed_limit=50, capacity=1) #capacity of 1
+road1 = Road("R1", Node("A", 0, 0), Node("B", 1000, 0), speed_limit_kmh=50, capacity=10)  
+road2 = Road("R2", Node("B", 0, 0), Node("C", 1000, 0), speed_limit_kmh=50, capacity=1) 
 
 road2.vehicles = ["test1"] #fill next road
 
@@ -80,7 +80,7 @@ vehicle = Vehicle("test2", route=[road1, road2]) #car to enter r2
 road1.add_vehicle(vehicle)
 
 vehicle.position = 0.99
-vehicle.update_position(time_step=0.1) #car reaches the end of r1
+vehicle.update_position(time_step=1.0) #car reaches the end of r1
 
 print(f"Vehicle waiting: {vehicle.waiting}")  #should be True
 print(f"Vehicle position: {vehicle.position}")  #should be 1.0

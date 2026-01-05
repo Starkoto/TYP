@@ -2,6 +2,14 @@ import json
 import math
 from typing import Dict, List, Tuple, Optional
 
+"""
+UNITS USED IN THIS SIMULATION:
+- Distance: meters (m)
+- Speed: km/h (stored), m/s (internal calculations)
+- Time: seconds (s)
+- Capacity: number of vehicles
+"""
+
 class Node:
 
     def __init__(self, node_id: str, x: float, y: float):
@@ -19,17 +27,22 @@ class Node:
     
 class Road:
     
-    def __init__(self, road_id: str, start_node: Node, end_node: Node, speed_limit: float, capacity: int, base_stress: float = 0.0):
+    def __init__(self, road_id: str, start_node: Node, end_node: Node, speed_limit_kmh: float, capacity: int, base_stress: float = 0.0):
 
         self.id = road_id
         self.start = start_node
         self.end = end_node
-        self.speed_limit = speed_limit
+        
+        self.speed_limit_kmh = speed_limit_kmh # Storing speed limit in km/h for readability
+        
+        # Convert to m/s for internal calculations
+        # 50 km/h = 50 * 1000 / 3600 = 13.89 m/s
+        self.speed_limit = speed_limit_kmh * 1000 / 3600
+        
         self.capacity = capacity
-
-        self.distance = start_node.euc_distance(end_node)
+        self.distance = start_node.euc_distance(end_node)  # Distance in meters
         self.vehicles = []
-        self.current_speed = speed_limit
+        self.current_speed = self.speed_limit  # Start at speed limit (m/s)
         self.base_stress = base_stress
 
     def get_density(self) -> float:
@@ -131,7 +144,7 @@ class TrafficNetwork:
                 road_id=road_data['id'],
                 start_node=start_node,
                 end_node=end_node,
-                speed_limit=road_data['speed_limit'],
+                speed_limit_kmh=road_data['speed_limit'],
                 capacity=road_data['capacity'],
                 base_stress=road_data.get('base_stress', 0.0)
             )
