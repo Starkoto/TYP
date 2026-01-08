@@ -31,3 +31,28 @@ class Driver:
             "speed_observations": [],
             "stress_observations": []
         }
+
+    def start_trip(self, start_node: str, goal_node: str, network):
+
+        self.trip_count += 1
+
+        self.current_trip_data = { # Reset trip tracking
+            "start_node": start_node,
+            "goal_node": goal_node,
+            "roads_traveled": [],
+            "total_time": 0.0,
+            "total_distance": 0.0,
+            "speed_observations": [],
+            "stress_observations": []
+        }
+
+        # Creating vehicle
+        self.current_vehicle = Vehicle(vehicle_id=f"{self.id}_trip_{self.trip_count}", start_node=start_node, goal_node=goal_node, pathfinder=self.pathfinder)
+
+        if self.current_vehicle.route:
+            first_road = self.current_vehicle.route[0]
+            first_road.add_vehicle(self.current_vehicle)
+            self.current_trip_data["roads_traveled"].append(first_road.id)
+
+            
+
