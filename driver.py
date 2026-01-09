@@ -9,7 +9,7 @@ class Driver:
         self.pathfinder = pathfinder
 
         # Personality paramenters
-        self.stress_tolarence = stress_tolerance
+        self.stress_tolerance = stress_tolerance
         self.familiarity_weight = familiarity_weight
         self.learning_rate = learning_rate
 
