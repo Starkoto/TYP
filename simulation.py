@@ -51,3 +51,31 @@ class Simulation:
         print(f"Simulation complete. Time: {self.time}")
         print(f"Total trips logged: check {self.data_collector.trips_file}")
                 
+    def get_destination(self, driver: Driver) -> tuple:
+
+        if driver.fixed_route:
+            if driver.current_vehicle and driver.current_vehicle.route:
+                last_road = driver.current_vehicle.route[-1]
+                current_node = last_road.end.id
+            else:
+                current_node = driver.fixed_route[0]
+
+            goal = driver.get_next_destination(current_node, self.node_ids)
+            
+            return current_node, goal
+        
+        else:
+            if len(self.node_ids) < 2:
+                return None, None
+            
+            if driver.current_vehicle and driver.current_vehicle.route:
+                last_road = driver.current_vehicle.route[-1]
+                start = last_road.end.id
+            else:
+                start = random.choice(self.node_ids)
+
+            goal = random.choice(self.node_ids)
+            while goal == start:
+                goal = random.choice(self.node_ids)
+
+            return start, goal
