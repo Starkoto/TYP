@@ -1,12 +1,13 @@
 from typing import Dict, List, Optional
 from vehicle import Vehicle
+from pathfinding import AdaptivePathfinder
 
 class Driver:
 
-    def __init__(self, driver_id: str, pathfinder, stress_tolerance: float = 0.5, familiarity_weight: float = 0.5, learning_rate: float = 0.3, fixed_route: List[str] = None):
+    def __init__(self, driver_id: str, network, stress_tolerance: float = 0.5, familiarity_weight: float = 0.5, learning_rate: float = 0.3, fixed_route: List[str] = None):
 
         self.id = driver_id
-        self.pathfinder = pathfinder
+        self.pathfinder = AdaptivePathfinder(network, driver=self)
 
         # Personality paramenters
         self.stress_tolerance = stress_tolerance

@@ -134,28 +134,40 @@ class AStar:
 
 
 class AdaptivePathfinder(AStar):
-    """
-    Adaptive A* pathfinding that uses driver memory.
-    TODO: Implement in Week 5-8 after standard A* is tested.
-    """
     
-    def __init__(self, network, driver_memory=None):
+    def __init__(self, network, driver=None):
         """
         Initialize adaptive pathfinder.
         
         Args:
             network: TrafficNetwork instance
-            driver_memory: DriverMemory instance (for learning)
+            driver: DriverMemory instance (for learning)
         """
         super().__init__(network)
-        self.driver_memory = driver_memory
+        self.driver = driver
     
     def get_edge_cost(self, road) -> float:
-        """
-        Calculate cost using learned speeds from memory.
-        TODO: Implement later.
         
-        For now, just use parent class (standard A*).
-        """
-        # Will implement this later with driver memory
-        return super().get_edge_cost(road)
+        # If there is no driver use standard A*
+        if self.driver is None:
+            return super().get_edge_cost(road)
+        
+        if road.id in self.driver.memory:
+            mem = self.driver.memory[road.id]
+            remembered_speed = mem["avg_speed"] / 3.6
+            remembered_stress = mem["avg_stress"]
+            usage = mem["usage"]
+        else:
+            remembered_speed = road.speed_limit
+            remembered_stress = 0.0
+            usage = 0
+
+        base_time = road.distance / remembered_speed
+
+        stress_penalty = remembered_stress * self.driver.stress_tolerance
+
+        familiarity_penalty = self.driver.familiarity_weight / (usage + 1)
+
+        cost = base_time * (1 + stress_penalty + familiarity_penalty)
+        
+        return cost
