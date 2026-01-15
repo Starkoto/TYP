@@ -79,3 +79,31 @@ class Simulation:
                 goal = random.choice(self.node_ids)
 
             return start, goal
+        
+    def create_drivers(network: TrafficNetwork, num_drivers: int, 
+                   random_personalities: bool = True) -> List[Driver]:
+    
+        drivers = []
+        
+        for i in range(num_drivers):
+            
+            if random_personalities:
+                stress_tolerance = random.uniform(0.1, 0.9)
+                familiarity_weight = random.uniform(0.1, 0.9)
+                learning_rate = random.uniform(0.1, 0.5)
+            else:
+                stress_tolerance = 0.5
+                familiarity_weight = 0.5
+                learning_rate = 0.3
+            
+            driver = Driver(
+                driver_id=f"D{i}",
+                network=network,
+                stress_tolerance=stress_tolerance,
+                familiarity_weight=familiarity_weight,
+                learning_rate=learning_rate
+            )
+            
+            drivers.append(driver)
+        
+        return drivers
