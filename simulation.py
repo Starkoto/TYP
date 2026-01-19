@@ -43,8 +43,8 @@ class Simulation:
                         avg_stress=summary["avg_stress"]
                     )
 
-            if self.data_collector.should_log_reads(self.time):
-                self.data_collector.log_reads(self.time, self.network.reads)
+            if self.data_collector.should_log_roads(self.time):
+                self.data_collector.log_roads(self.time, self.network.roads)
 
             self.time += time_step
 
