@@ -54,10 +54,8 @@ class Road:
         if density <= 0.5:
             self.current_speed = self.speed_limit
         elif density <= 1.0:
-            reduction_factor = 1.0 - (1.4 * (density - 0.5))
+            reduction_factor = 1.0 - (1.0 * (density - 0.5))
             self.current_speed = self.speed_limit * reduction_factor
-        else:
-            self.current_speed = (0.1 * self.speed_limit) / density
 
     def get_stress_level(self):
         density = self.get_density()
