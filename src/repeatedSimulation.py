@@ -1,10 +1,10 @@
 import random
 from typing import List, Dict, Optional
-from network import TrafficNetwork, Node, Road
-from driver import Driver
-from simulation import Simulation
-from dataCollection import DataCollector
-from visualization import visualize_network_with_traffic
+from src.network import TrafficNetwork, Node, Road
+from src.driver import Driver
+from src.simulation import Simulation
+from src.dataCollection import DataCollector
+from src.visualization import visualize_network_with_traffic
 import matplotlib.pyplot as plt
 
 

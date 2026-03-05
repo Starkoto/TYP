@@ -1,13 +1,12 @@
 import sys
-sys.path.insert(0, '/mnt/project')
-sys.path.insert(0, '.')
-
-from network import TrafficNetwork, Node, Road
-from driver import Driver
-from visualization import visualize_network_with_traffic
-from dataCollection import DataCollector
-import matplotlib.pyplot as plt
 import os
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
+
+from src.network import TrafficNetwork, Node, Road
+from src.driver import Driver
+from src.visualization import visualize_network_with_traffic
+from src.dataCollection import DataCollector
+import matplotlib.pyplot as plt
 
 def build_braess_network(include_shortcut=False):
     """

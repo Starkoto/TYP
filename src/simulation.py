@@ -1,8 +1,8 @@
 import random
 from typing import List, Optional
-from network import TrafficNetwork
-from driver import Driver
-from dataCollection import DataCollector
+from src.network import TrafficNetwork
+from src.driver import Driver
+from src.dataCollection import DataCollector
 
 class Simulation:
 

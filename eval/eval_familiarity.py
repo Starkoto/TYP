@@ -1,13 +1,12 @@
 import sys
-sys.path.insert(0, '/mnt/project')
-sys.path.insert(0, '.')  # For visualization.py in the same directory
-
-from network import TrafficNetwork, Node, Road
-from driver import Driver
-from visualization import visualize_network_with_traffic
-from dataCollection import DataCollector
-import matplotlib.pyplot as plt
 import os
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
+
+from src.network import TrafficNetwork, Node, Road
+from src.driver import Driver
+from src.visualization import visualize_network_with_traffic
+from src.dataCollection import DataCollector
+import matplotlib.pyplot as plt
 
 class DummyVehicle:
     def __init__(self, vid):
@@ -30,7 +29,7 @@ def build_network():
     ]
     for a, b in edges:
         for s, e in [(a, b), (b, a)]:
-            speed = 60 if (s == "A" and e == "B") or (s == "B" and e == "A") else 50
+            speed = 51 if (s == "A" and e == "B") or (s == "B" and e == "A") else 50
             network.add_road(Road(f"{s}{e}", nodes[s], nodes[e], speed_limit_kmh=speed, capacity=10))
     
     return network
@@ -81,18 +80,18 @@ def print_path_costs(driver, network, path_roads):
 
 
 # ============================================================
-# CONFIGURATION
+# CONFIGURATION - Change these to test different scenarios
 # ============================================================
 
-CONGESTION = {"AB": 7}          # 7/10 congestion on AB
-NUM_TRIPS = 15                   # Enough trips to see both switch
-DRIVERS = [
-    {"id": "FastLearner", "stress_tolerance": 0.0, "familiarity_weight": 0.1, "learning_rate": 0.7},
-    {"id": "SlowLearner", "stress_tolerance": 0.0, "familiarity_weight": 0.1, "learning_rate": 0.3},
+CONGESTION = {"AB": 6}          # Which roads have congestion and how many vehicles
+NUM_TRIPS = 10                   # How many trips to simulate
+DRIVERS = [                      # List of drivers to test
+    {"id": "HighFam", "stress_tolerance": 0.0, "familiarity_weight": 0.9, "learning_rate": 0.3},
+    {"id": "LowFam",  "stress_tolerance": 0.0, "familiarity_weight": 0.1, "learning_rate": 0.3},
 ]
 PATH_AB = ["AB", "BE", "EF", "FI"]   # Path through B
 PATH_AD = ["AD", "DE", "EF", "FI"]   # Path through D
-OUTPUT_DIR = "test_learning_rate"
+OUTPUT_DIR = "test_output"            # Where to save visualizations
 
 if not os.path.exists(OUTPUT_DIR):
     os.makedirs(OUTPUT_DIR)
@@ -105,16 +104,10 @@ if not os.path.exists(OUTPUT_DIR):
 # Visualize initial network state
 init_network = build_network()
 reset_network(init_network, CONGESTION)
-fig, ax = visualize_network_with_traffic(init_network, "Initial Network State (AB=60km/h, 7/10 congestion)")
+fig, ax = visualize_network_with_traffic(init_network, "Initial Network State")
 plt.savefig(os.path.join(OUTPUT_DIR, "network_initial.png"), dpi=150)
 plt.close()
 print(f"Saved initial network visualization to {OUTPUT_DIR}/network_initial.png")
-
-# Show expected vs actual speed
-ab_road = init_network.roads["AB"]
-print(f"\nAB road: speed_limit=60 km/h, {len(ab_road.vehicles)}/10 vehicles")
-print(f"  When driver enters: 8/10 density, reduction=0.7, actual speed={60*0.7:.1f} km/h")
-print(f"  AD road: speed_limit=50 km/h, empty, actual speed=50.0 km/h")
 
 for driver_config in DRIVERS:
     network = build_network()
@@ -135,8 +128,6 @@ for driver_config in DRIVERS:
     print(f"DRIVER: {driver_config['id']}")
     print(f"  ω_f={driver_config['familiarity_weight']}, ω_s={driver_config['stress_tolerance']}, α={driver_config['learning_rate']}")
     print(f"{'='*60}")
-    
-    switched = False
     
     for trip in range(1, NUM_TRIPS + 1):
         reset_network(network, CONGESTION)
@@ -176,14 +167,11 @@ for driver_config in DRIVERS:
         else:
             print(f"\n  Trip {trip}: route={' → '.join(route)} | AB path={ab_total:.4f} | AD path={ad_total:.4f}")
         
-        # Detect switching trip
-        if not switched and route[0] == "AD":
-            switched = True
-            print(f"    *** SWITCHED TO AD ON TRIP {trip} ***")
-        
         # Show detailed costs on first trip, switching trip, and last trip
-        if trip == 1 or trip == NUM_TRIPS or (switched and route[0] == "AD" and 
-            (trip == 1 or driver.memory.get("AD", {}).get("usage", 0) == 1)):
+        if trip == 1 or trip == NUM_TRIPS or (trip > 1 and route[0] != "AB" and 
+            any(r.id == "AB" for r in Driver(driver_config["id"], network, 
+                stress_tolerance=driver_config["stress_tolerance"],
+                familiarity_weight=driver_config["familiarity_weight"]).pathfinder.find_path("A", "I") or [])):
             print(f"    AB path breakdown:")
             print_path_costs(driver, network, PATH_AB)
             print(f"    AD path breakdown:")
@@ -193,7 +181,7 @@ for driver_config in DRIVERS:
     
     # Visualize final network state for this driver
     reset_network(network, CONGESTION)
-    fig, ax = visualize_network_with_traffic(network, f"{driver_config['id']} (α={driver_config['learning_rate']}) - Final State")
+    fig, ax = visualize_network_with_traffic(network, f"{driver_config['id']} (ω_f={driver_config['familiarity_weight']}) - Final State")
     plt.savefig(os.path.join(OUTPUT_DIR, f"network_{driver_config['id']}.png"), dpi=150)
     plt.close()
     print(f"\n  Saved visualization to {OUTPUT_DIR}/network_{driver_config['id']}.png")

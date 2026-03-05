@@ -2,11 +2,11 @@ import sys
 sys.path.insert(0, '/mnt/project')
 sys.path.insert(0, '.')
 
-from network import TrafficNetwork, Node, Road
-from driver import Driver
-from visualization import visualize_network_with_traffic
-from dataCollection import DataCollector
-from pathfinding import AStar
+from src.network import TrafficNetwork, Node, Road
+from src.driver import Driver
+from src.visualization import visualize_network_with_traffic
+from src.dataCollection import DataCollector
+from src.pathfinding import AStar
 import matplotlib.pyplot as plt
 import os
 
@@ -69,7 +69,7 @@ def run_trip_base_astar(network, start, goal, congestion_setup):
     route_ids = [r.id for r in route]
     
     # Simulate driving: add vehicle to first road, step through
-    from vehicle import Vehicle
+    from src.vehicle import Vehicle
     vehicle = Vehicle(vehicle_id="base_astar", route=route)
     route[0].add_vehicle(vehicle)
     

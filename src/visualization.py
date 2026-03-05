@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 import networkx as nx
-from network import TrafficNetwork
+from src.network import TrafficNetwork
 
 
 def visualize_network(network: TrafficNetwork, title: str = "Traffic Network"):
@@ -133,7 +133,7 @@ def visualize_network_with_traffic(network: TrafficNetwork, title: str = "Traffi
 
 # Test it
 if __name__ == "__main__":
-    from network import Node, Road
+    from src.network import Node, Road
 
     network = TrafficNetwork()
 

@@ -1,6 +1,6 @@
 from typing import Dict, List, Optional
-from vehicle import Vehicle
-from pathfinding import AdaptivePathfinder
+from src.vehicle import Vehicle
+from src.pathfinding import AdaptivePathfinder
 
 class Driver:
 
