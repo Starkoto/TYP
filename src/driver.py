@@ -49,11 +49,15 @@ class Driver:
 
         # Creating vehicle
         self.current_vehicle = Vehicle(vehicle_id=f"{self.id}_trip_{self.trip_count}", start_node=start_node, goal_node=goal_node, pathfinder=self.pathfinder)
+        self.waiting_to_start = False
 
         if self.current_vehicle.route:
             first_road = self.current_vehicle.route[0]
-            first_road.add_vehicle(self.current_vehicle)
-            self.current_trip_data["roads_traveled"].append(first_road.id)
+            if first_road.has_space():
+                first_road.add_vehicle(self.current_vehicle)
+                self.current_trip_data["roads_traveled"].append(first_road.id)
+            else:
+                self.waiting_to_start = True
 
 
     def update(self, time_step: float):
@@ -63,6 +67,17 @@ class Driver:
         
         if self.current_vehicle.has_reached_destination():
             return False
+        
+        # If waiting to enter first road, try each timestep
+        if self.waiting_to_start:
+            first_road = self.current_vehicle.route[0]
+            if first_road.has_space():
+                first_road.add_vehicle(self.current_vehicle)
+                self.current_trip_data["roads_traveled"].append(first_road.id)
+                self.waiting_to_start = False
+            else:
+                self.current_trip_data["total_time"] += time_step
+                return False
         
         road = self.current_vehicle.get_current_road()
         if road:
@@ -167,7 +182,11 @@ class Driver:
         }
     
     def has_active_trip(self) -> bool: # Check if on trip
-        return self.current_vehicle is not None and not self.current_vehicle.has_reached_destination()
+        if self.current_vehicle is None:
+            return False
+        if getattr(self, 'waiting_to_start', False):
+            return True
+        return not self.current_vehicle.has_reached_destination()
     
     def __repr__(self) -> str:
         status = "driving" if self.has_active_trip() else "idle"
