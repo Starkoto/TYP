@@ -1,0 +1,16 @@
+driver_id,trip_number,start_node,goal_node,route_taken,total_trip_time,total_distance,average_speed,average_stress
+Adaptive,1,A,I,AB->BC->CF->FI,30.0,400.0,48.0,0.0
+Adaptive,2,A,I,AB->BC->CF->FI,30.0,400.0,48.0,0.0
+Adaptive,3,A,I,AB->BC->CF->FI,30.0,400.0,48.0,0.0
+Adaptive,4,A,I,AB->BC->CF->FI,30.0,400.0,48.0,0.0
+Adaptive,5,A,I,AB->BC->CF->FI,30.0,400.0,48.0,0.0
+Adaptive,6,A,I,AB->BE->EF->FI,39.0,400.0,38.56,0.1477
+Adaptive,7,A,I,AB->BE->EF->FI,39.0,400.0,38.56,0.1477
+Adaptive,8,A,I,AB->BE->EF->FI,39.0,400.0,38.56,0.1477
+Adaptive,9,A,I,AD->DE->EF->FI,34.0,400.0,44.71,0.0
+Adaptive,10,A,I,AD->DE->EF->FI,34.0,400.0,44.71,0.0
+Adaptive,11,A,I,AD->DE->EF->FI,34.0,400.0,44.71,0.0
+Adaptive,12,A,I,AD->DE->EF->FI,34.0,400.0,44.71,0.0
+Adaptive,13,A,I,AD->DE->EF->FI,34.0,400.0,44.71,0.0
+Adaptive,14,A,I,AD->DE->EF->FI,34.0,400.0,44.71,0.0
+Adaptive,15,A,I,AD->DE->EF->FI,34.0,400.0,44.71,0.0
