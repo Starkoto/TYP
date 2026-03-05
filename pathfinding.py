@@ -76,6 +76,10 @@ class AStar:
         while open_set:
             # Get node with lowest f_score
             current_f, current = heapq.heappop(open_set)
+            
+            # Skip stale entries (node was already processed with a better score)
+            if current not in open_set_hash:
+                continue
             open_set_hash.remove(current)
             
             # Found the goal!
@@ -99,10 +103,9 @@ class AStar:
                     f = tentative_g + self.heuristic(neighbor_id, goal_id)
                     f_score[neighbor_id] = f
                     
-                    # Add to open set if not already there
-                    if neighbor_id not in open_set_hash:
-                        heapq.heappush(open_set, (f, neighbor_id))
-                        open_set_hash.add(neighbor_id)
+                    # Add to open set (allow duplicates, stale entries skipped on pop)
+                    heapq.heappush(open_set, (f, neighbor_id))
+                    open_set_hash.add(neighbor_id)
         
         # No path found
         return None

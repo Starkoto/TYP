@@ -1,0 +1,11 @@
+driver_id,trip_number,start_node,goal_node,route_taken,total_trip_time,total_distance,average_speed,average_stress
+BaseAStar,1,A,I,AB->BE->EF->FI,35.0,400.0,45.6,0.0
+BaseAStar,2,A,I,AB->BE->EF->FI,35.0,400.0,45.6,0.0
+BaseAStar,3,A,I,AB->BE->EF->FI,35.0,400.0,45.6,0.0
+BaseAStar,4,A,I,AB->BE->EF->FI,35.0,400.0,45.6,0.0
+BaseAStar,5,A,I,AB->BE->EF->FI,35.0,400.0,45.6,0.0
+BaseAStar,6,A,I,AB->BE->EF->FI,35.0,400.0,45.6,0.0
+BaseAStar,7,A,I,AB->BE->EF->FI,35.0,400.0,45.6,0.0
+BaseAStar,8,A,I,AB->BE->EF->FI,35.0,400.0,45.6,0.0
+BaseAStar,9,A,I,AB->BE->EF->FI,35.0,400.0,45.6,0.0
+BaseAStar,10,A,I,AB->BE->EF->FI,35.0,400.0,45.6,0.0

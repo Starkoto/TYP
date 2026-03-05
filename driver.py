@@ -29,8 +29,8 @@ class Driver:
             "roads_traveled": [],
             "total_time": 0.0,
             "total_distance": 0.0,
-            "speed_observations": [],
-            "stress_observations": []
+            "speed_observations": {},
+            "stress_observations": {}
         }
 
     def start_trip(self, start_node: str, goal_node: str, network):
@@ -43,8 +43,8 @@ class Driver:
             "roads_traveled": [],
             "total_time": 0.0,
             "total_distance": 0.0,
-            "speed_observations": [],
-            "stress_observations": []
+            "speed_observations": {},  # road_id -> [speeds] (per-road tracking)
+            "stress_observations": {}  # road_id -> [stresses] (per-road tracking)
         }
 
         # Creating vehicle
@@ -66,8 +66,11 @@ class Driver:
         
         road = self.current_vehicle.get_current_road()
         if road:
-            self.current_trip_data["speed_observations"].append(road.current_speed * 3.6)  # km/h
-            self.current_trip_data["stress_observations"].append(road.get_stress_level())
+            if road.id not in self.current_trip_data["speed_observations"]:
+                self.current_trip_data["speed_observations"][road.id] = []
+                self.current_trip_data["stress_observations"][road.id] = []
+            self.current_trip_data["speed_observations"][road.id].append(road.current_speed * 3.6)  # km/h
+            self.current_trip_data["stress_observations"][road.id].append(road.get_stress_level())
 
         old_road_index = self.current_vehicle.route_index
 
@@ -117,13 +120,15 @@ class Driver:
                     "avg_stress": 0.0
                 }
 
-            if self.current_trip_data["speed_observations"]:
-                observed_speed = sum(self.current_trip_data["speed_observations"]) / len(self.current_trip_data["speed_observations"])
+            if road_id in self.current_trip_data["speed_observations"]:
+                road_speeds = self.current_trip_data["speed_observations"][road_id]
+                observed_speed = sum(road_speeds) / len(road_speeds)
             else:
                 observed_speed = self.memory[road_id]["avg_speed"] # If not just use what is already stored
             
-            if self.current_trip_data["stress_observations"]:
-                observed_stress = sum(self.current_trip_data["stress_observations"]) / len(self.current_trip_data["stress_observations"])
+            if road_id in self.current_trip_data["stress_observations"]:
+                road_stresses = self.current_trip_data["stress_observations"][road_id]
+                observed_stress = sum(road_stresses) / len(road_stresses)
             else:
                 observed_stress = self.memory[road_id]["avg_stress"]
             
@@ -140,10 +145,14 @@ class Driver:
         avg_stress = 0.0
         
         if self.current_trip_data["speed_observations"]:
-            avg_speed = sum(self.current_trip_data["speed_observations"]) / len(self.current_trip_data["speed_observations"])
+            all_speeds = [s for speeds in self.current_trip_data["speed_observations"].values() for s in speeds]
+            if all_speeds:
+                avg_speed = sum(all_speeds) / len(all_speeds)
         
         if self.current_trip_data["stress_observations"]:
-            avg_stress = sum(self.current_trip_data["stress_observations"]) / len(self.current_trip_data["stress_observations"])
+            all_stresses = [s for stresses in self.current_trip_data["stress_observations"].values() for s in stresses]
+            if all_stresses:
+                avg_stress = sum(all_stresses) / len(all_stresses)
         
         return {
             "driver_id": self.id,
