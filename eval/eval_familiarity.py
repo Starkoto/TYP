@@ -91,7 +91,7 @@ DRIVERS = [                      # List of drivers to test
 ]
 PATH_AB = ["AB", "BE", "EF", "FI"]   # Path through B
 PATH_AD = ["AD", "DE", "EF", "FI"]   # Path through D
-OUTPUT_DIR = "test_output"            # Where to save visualizations
+OUTPUT_DIR = "test_familiarity"            # Where to save visualizations
 
 if not os.path.exists(OUTPUT_DIR):
     os.makedirs(OUTPUT_DIR)
