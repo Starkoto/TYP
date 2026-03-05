@@ -1,6 +1,6 @@
 import sys
-sys.path.insert(0, '/mnt/project')
-sys.path.insert(0, '.')
+import os
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
 
 from src.network import TrafficNetwork, Node, Road
 from src.driver import Driver
@@ -8,7 +8,6 @@ from src.visualization import visualize_network_with_traffic
 from src.dataCollection import DataCollector
 from src.pathfinding import AStar
 import matplotlib.pyplot as plt
-import os
 
 class DummyVehicle:
     def __init__(self, vid):
