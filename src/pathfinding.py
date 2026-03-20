@@ -8,7 +8,6 @@ class AStar:
         self.network = network
         
         # Find maximum speed in network for heuristic
-        # (heuristic assumes best case: traveling at max speed)
         self.max_speed = max(road.speed_limit for road in network.roads.values()) if network.roads else 60
     
     def heuristic(self, node_id: str, goal_id: str) -> float:
@@ -24,31 +23,12 @@ class AStar:
         return distance / self.max_speed
     
     def get_edge_cost(self, road) -> float:
-        """
-        Calculate cost of traveling along a road.
-        For standard A*, uses: distance / speed_limit (travel time)
-        
-        Args:
-            road: Road object
-            
-        Returns:
-            Cost of using this road (travel time)
-        """
         # Cost = distance / speed (time to traverse)
         # Using speed_limit (static cost, not affected by current traffic)
         return road.distance / road.speed_limit
     
-    def find_path(self, start_id: str, goal_id: str) -> Optional[List]:
-        """
-        Find the shortest path from start to goal using A*.
-        
-        Args:
-            start_id: Starting node ID
-            goal_id: Goal node ID
-            
-        Returns:
-            List of Road objects representing the path, or None if no path exists
-        """
+    def find_path(self, start_id: str, goal_id: str) -> Optional[List]: # Find shorthest path
+
         # Check that start and goal exist
         if start_id not in self.network.nodes or goal_id not in self.network.nodes:
             return None
@@ -77,12 +57,12 @@ class AStar:
             # Get node with lowest f_score
             current_f, current = heapq.heappop(open_set)
             
-            # Skip stale entries (node was already processed with a better score)
+            # Skip stale entries
             if current not in open_set_hash:
                 continue
             open_set_hash.remove(current)
             
-            # Found the goal!
+            # Found the goal
             if current == goal_id:
                 return self._reconstruct_path(came_from, current)
             
@@ -110,18 +90,9 @@ class AStar:
         # No path found
         return None
     
-    def _reconstruct_path(self, came_from: Dict[str, Tuple[str, object]], 
-                          current: str) -> List:
-        """
-        Reconstruct the path from start to goal.
-        
-        Args:
-            came_from: Dictionary mapping node_id -> (previous_node, road)
-            current: Goal node ID
-            
-        Returns:
-            List of Road objects from start to goal
-        """
+    def _reconstruct_path(self, came_from: Dict[str, Tuple[str, object]],
+                          current: str) -> List:  # Reconstruct the path from start to goal.
+
         path = []
         
         # Work backwards from goal to start
@@ -139,13 +110,6 @@ class AStar:
 class AdaptivePathfinder(AStar):
     
     def __init__(self, network, driver=None):
-        """
-        Initialize adaptive pathfinder.
-        
-        Args:
-            network: TrafficNetwork instance
-            driver: DriverMemory instance (for learning)
-        """
         super().__init__(network)
         self.driver = driver
     

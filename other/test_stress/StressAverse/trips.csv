@@ -1,0 +1,11 @@
+driver_id,trip_number,start_node,goal_node,route_taken,total_trip_time,total_distance,average_speed,average_stress
+StressAverse,1,A,I,AB->BE->EF->FI,30.0,400.0,52.0,0.1
+StressAverse,2,A,I,AB->BE->EF->FI,30.0,400.0,52.0,0.1
+StressAverse,3,A,I,AB->BE->EF->FI,30.0,400.0,52.0,0.1
+StressAverse,4,A,I,AB->BE->EF->FI,30.0,400.0,52.0,0.1
+StressAverse,5,A,I,AB->BE->EF->FI,30.0,400.0,52.0,0.1
+StressAverse,6,A,I,AB->BE->EF->FI,30.0,400.0,52.0,0.1
+StressAverse,7,A,I,AB->BE->EF->FI,30.0,400.0,52.0,0.1
+StressAverse,8,A,I,AD->DE->EF->FI,32.0,400.0,50.0,0.0
+StressAverse,9,A,I,AD->DE->EF->FI,32.0,400.0,50.0,0.0
+StressAverse,10,A,I,AD->DE->EF->FI,32.0,400.0,50.0,0.0

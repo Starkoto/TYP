@@ -23,7 +23,7 @@ timestamp,road_id,vehicle_count,current_speed_kmh,density,stress_level
 1,ON,0,40.0,0.0,0.0
 1,OP,0,40.0,0.0,0.0
 1,PO,0,40.0,0.0,0.0
-1,AE,9,20.0,1.8,0.9
+1,AE,5,20.0,1.0,0.5
 1,EA,0,40.0,0.0,0.0
 1,BF,0,40.0,0.0,0.0
 1,FB,0,40.0,0.0,0.0
@@ -71,7 +71,7 @@ timestamp,road_id,vehicle_count,current_speed_kmh,density,stress_level
 2,ON,0,40.0,0.0,0.0
 2,OP,0,40.0,0.0,0.0
 2,PO,0,40.0,0.0,0.0
-2,AE,9,20.0,1.8,0.9
+2,AE,5,20.0,1.0,0.5
 2,EA,0,40.0,0.0,0.0
 2,BF,0,40.0,0.0,0.0
 2,FB,0,40.0,0.0,0.0
@@ -119,7 +119,7 @@ timestamp,road_id,vehicle_count,current_speed_kmh,density,stress_level
 3,ON,0,40.0,0.0,0.0
 3,OP,0,40.0,0.0,0.0
 3,PO,0,40.0,0.0,0.0
-3,AE,6,20.0,1.2,0.6
+3,AE,5,20.0,1.0,0.5
 3,EA,0,40.0,0.0,0.0
 3,BF,0,40.0,0.0,0.0
 3,FB,0,40.0,0.0,0.0
@@ -167,7 +167,7 @@ timestamp,road_id,vehicle_count,current_speed_kmh,density,stress_level
 4,ON,0,40.0,0.0,0.0
 4,OP,0,40.0,0.0,0.0
 4,PO,0,40.0,0.0,0.0
-4,AE,6,20.0,1.2,0.6
+4,AE,5,20.0,1.0,0.5
 4,EA,0,40.0,0.0,0.0
 4,BF,0,40.0,0.0,0.0
 4,FB,0,40.0,0.0,0.0
@@ -215,7 +215,7 @@ timestamp,road_id,vehicle_count,current_speed_kmh,density,stress_level
 5,ON,0,40.0,0.0,0.0
 5,OP,0,40.0,0.0,0.0
 5,PO,0,40.0,0.0,0.0
-5,AE,6,20.0,1.2,0.6
+5,AE,5,20.0,1.0,0.5
 5,EA,0,40.0,0.0,0.0
 5,BF,0,40.0,0.0,0.0
 5,FB,0,40.0,0.0,0.0
@@ -263,7 +263,7 @@ timestamp,road_id,vehicle_count,current_speed_kmh,density,stress_level
 6,ON,0,40.0,0.0,0.0
 6,OP,0,40.0,0.0,0.0
 6,PO,0,40.0,0.0,0.0
-6,AE,6,20.0,1.2,0.6
+6,AE,5,20.0,1.0,0.5
 6,EA,0,40.0,0.0,0.0
 6,BF,0,40.0,0.0,0.0
 6,FB,0,40.0,0.0,0.0
@@ -311,7 +311,7 @@ timestamp,road_id,vehicle_count,current_speed_kmh,density,stress_level
 7,ON,0,40.0,0.0,0.0
 7,OP,0,40.0,0.0,0.0
 7,PO,0,40.0,0.0,0.0
-7,AE,6,20.0,1.2,0.6
+7,AE,5,20.0,1.0,0.5
 7,EA,0,40.0,0.0,0.0
 7,BF,0,40.0,0.0,0.0
 7,FB,0,40.0,0.0,0.0
@@ -359,7 +359,7 @@ timestamp,road_id,vehicle_count,current_speed_kmh,density,stress_level
 8,ON,0,40.0,0.0,0.0
 8,OP,0,40.0,0.0,0.0
 8,PO,0,40.0,0.0,0.0
-8,AE,6,20.0,1.2,0.6
+8,AE,5,20.0,1.0,0.5
 8,EA,0,40.0,0.0,0.0
 8,BF,0,40.0,0.0,0.0
 8,FB,0,40.0,0.0,0.0
@@ -407,7 +407,7 @@ timestamp,road_id,vehicle_count,current_speed_kmh,density,stress_level
 9,ON,0,40.0,0.0,0.0
 9,OP,0,40.0,0.0,0.0
 9,PO,0,40.0,0.0,0.0
-9,AE,7,20.0,1.4,0.7
+9,AE,5,20.0,1.0,0.5
 9,EA,0,40.0,0.0,0.0
 9,BF,0,40.0,0.0,0.0
 9,FB,0,40.0,0.0,0.0
@@ -455,7 +455,7 @@ timestamp,road_id,vehicle_count,current_speed_kmh,density,stress_level
 10,ON,0,40.0,0.0,0.0
 10,OP,0,40.0,0.0,0.0
 10,PO,0,40.0,0.0,0.0
-10,AE,6,20.0,1.2,0.6
+10,AE,5,20.0,1.0,0.5
 10,EA,0,40.0,0.0,0.0
 10,BF,0,40.0,0.0,0.0
 10,FB,0,40.0,0.0,0.0
@@ -503,7 +503,7 @@ timestamp,road_id,vehicle_count,current_speed_kmh,density,stress_level
 11,ON,0,40.0,0.0,0.0
 11,OP,0,40.0,0.0,0.0
 11,PO,0,40.0,0.0,0.0
-11,AE,6,20.0,1.2,0.6
+11,AE,5,20.0,1.0,0.5
 11,EA,0,40.0,0.0,0.0
 11,BF,0,40.0,0.0,0.0
 11,FB,0,40.0,0.0,0.0
@@ -551,7 +551,7 @@ timestamp,road_id,vehicle_count,current_speed_kmh,density,stress_level
 12,ON,0,40.0,0.0,0.0
 12,OP,0,40.0,0.0,0.0
 12,PO,0,40.0,0.0,0.0
-12,AE,6,20.0,1.2,0.6
+12,AE,5,20.0,1.0,0.5
 12,EA,0,40.0,0.0,0.0
 12,BF,0,40.0,0.0,0.0
 12,FB,0,40.0,0.0,0.0
@@ -599,7 +599,7 @@ timestamp,road_id,vehicle_count,current_speed_kmh,density,stress_level
 13,ON,0,40.0,0.0,0.0
 13,OP,0,40.0,0.0,0.0
 13,PO,0,40.0,0.0,0.0
-13,AE,6,20.0,1.2,0.6
+13,AE,5,20.0,1.0,0.5
 13,EA,0,40.0,0.0,0.0
 13,BF,0,40.0,0.0,0.0
 13,FB,0,40.0,0.0,0.0
@@ -647,7 +647,7 @@ timestamp,road_id,vehicle_count,current_speed_kmh,density,stress_level
 14,ON,0,40.0,0.0,0.0
 14,OP,0,40.0,0.0,0.0
 14,PO,0,40.0,0.0,0.0
-14,AE,6,20.0,1.2,0.6
+14,AE,5,20.0,1.0,0.5
 14,EA,0,40.0,0.0,0.0
 14,BF,0,40.0,0.0,0.0
 14,FB,0,40.0,0.0,0.0
@@ -695,7 +695,7 @@ timestamp,road_id,vehicle_count,current_speed_kmh,density,stress_level
 15,ON,0,40.0,0.0,0.0
 15,OP,0,40.0,0.0,0.0
 15,PO,0,40.0,0.0,0.0
-15,AE,6,20.0,1.2,0.6
+15,AE,5,20.0,1.0,0.5
 15,EA,0,40.0,0.0,0.0
 15,BF,0,40.0,0.0,0.0
 15,FB,0,40.0,0.0,0.0
@@ -719,7 +719,7 @@ timestamp,road_id,vehicle_count,current_speed_kmh,density,stress_level
 15,OK,0,40.0,0.0,0.0
 15,LP,0,40.0,0.0,0.0
 15,PL,0,40.0,0.0,0.0
-16,AB,3,36.0,0.6,0.06
+16,AB,2,40.0,0.4,0.0
 16,BA,0,40.0,0.0,0.0
 16,BC,0,40.0,0.0,0.0
 16,CB,0,40.0,0.0,0.0
@@ -743,7 +743,7 @@ timestamp,road_id,vehicle_count,current_speed_kmh,density,stress_level
 16,ON,0,40.0,0.0,0.0
 16,OP,0,40.0,0.0,0.0
 16,PO,0,40.0,0.0,0.0
-16,AE,6,20.0,1.2,0.6
+16,AE,5,20.0,1.0,0.5
 16,EA,0,40.0,0.0,0.0
 16,BF,0,40.0,0.0,0.0
 16,FB,0,40.0,0.0,0.0
@@ -769,7 +769,7 @@ timestamp,road_id,vehicle_count,current_speed_kmh,density,stress_level
 16,PL,0,40.0,0.0,0.0
 16,JO,8,31.5,0.8,0.24
 16,OJ,0,45.0,0.0,0.0
-17,AB,2,40.0,0.4,0.0
+17,AB,3,36.0,0.6,0.06
 17,BA,0,40.0,0.0,0.0
 17,BC,0,40.0,0.0,0.0
 17,CB,0,40.0,0.0,0.0
@@ -793,7 +793,7 @@ timestamp,road_id,vehicle_count,current_speed_kmh,density,stress_level
 17,ON,0,40.0,0.0,0.0
 17,OP,0,40.0,0.0,0.0
 17,PO,0,40.0,0.0,0.0
-17,AE,7,20.0,1.4,0.7
+17,AE,5,20.0,1.0,0.5
 17,EA,0,40.0,0.0,0.0
 17,BF,0,40.0,0.0,0.0
 17,FB,0,40.0,0.0,0.0
@@ -843,7 +843,7 @@ timestamp,road_id,vehicle_count,current_speed_kmh,density,stress_level
 18,ON,0,40.0,0.0,0.0
 18,OP,0,40.0,0.0,0.0
 18,PO,0,40.0,0.0,0.0
-18,AE,6,20.0,1.2,0.6
+18,AE,5,20.0,1.0,0.5
 18,EA,0,40.0,0.0,0.0
 18,BF,0,40.0,0.0,0.0
 18,FB,0,40.0,0.0,0.0
@@ -893,7 +893,7 @@ timestamp,road_id,vehicle_count,current_speed_kmh,density,stress_level
 19,ON,0,40.0,0.0,0.0
 19,OP,0,40.0,0.0,0.0
 19,PO,0,40.0,0.0,0.0
-19,AE,6,20.0,1.2,0.6
+19,AE,5,20.0,1.0,0.5
 19,EA,0,40.0,0.0,0.0
 19,BF,0,40.0,0.0,0.0
 19,FB,0,40.0,0.0,0.0
@@ -943,7 +943,7 @@ timestamp,road_id,vehicle_count,current_speed_kmh,density,stress_level
 20,ON,0,40.0,0.0,0.0
 20,OP,0,40.0,0.0,0.0
 20,PO,0,40.0,0.0,0.0
-20,AE,6,20.0,1.2,0.6
+20,AE,5,20.0,1.0,0.5
 20,EA,0,40.0,0.0,0.0
 20,BF,0,40.0,0.0,0.0
 20,FB,0,40.0,0.0,0.0
@@ -993,7 +993,7 @@ timestamp,road_id,vehicle_count,current_speed_kmh,density,stress_level
 21,ON,0,40.0,0.0,0.0
 21,OP,0,40.0,0.0,0.0
 21,PO,0,40.0,0.0,0.0
-21,AE,6,20.0,1.2,0.6
+21,AE,5,20.0,1.0,0.5
 21,EA,0,40.0,0.0,0.0
 21,BF,0,40.0,0.0,0.0
 21,FB,0,40.0,0.0,0.0
@@ -1043,7 +1043,7 @@ timestamp,road_id,vehicle_count,current_speed_kmh,density,stress_level
 22,ON,0,40.0,0.0,0.0
 22,OP,0,40.0,0.0,0.0
 22,PO,0,40.0,0.0,0.0
-22,AE,6,20.0,1.2,0.6
+22,AE,5,20.0,1.0,0.5
 22,EA,0,40.0,0.0,0.0
 22,BF,0,40.0,0.0,0.0
 22,FB,0,40.0,0.0,0.0
@@ -1093,7 +1093,7 @@ timestamp,road_id,vehicle_count,current_speed_kmh,density,stress_level
 23,ON,0,40.0,0.0,0.0
 23,OP,0,40.0,0.0,0.0
 23,PO,0,40.0,0.0,0.0
-23,AE,6,20.0,1.2,0.6
+23,AE,5,20.0,1.0,0.5
 23,EA,0,40.0,0.0,0.0
 23,BF,0,40.0,0.0,0.0
 23,FB,0,40.0,0.0,0.0
@@ -1143,7 +1143,7 @@ timestamp,road_id,vehicle_count,current_speed_kmh,density,stress_level
 24,ON,0,40.0,0.0,0.0
 24,OP,0,40.0,0.0,0.0
 24,PO,0,40.0,0.0,0.0
-24,AE,6,20.0,1.2,0.6
+24,AE,5,20.0,1.0,0.5
 24,EA,0,40.0,0.0,0.0
 24,BF,0,40.0,0.0,0.0
 24,FB,0,40.0,0.0,0.0
@@ -1193,7 +1193,7 @@ timestamp,road_id,vehicle_count,current_speed_kmh,density,stress_level
 25,ON,0,40.0,0.0,0.0
 25,OP,0,40.0,0.0,0.0
 25,PO,0,40.0,0.0,0.0
-25,AE,6,20.0,1.2,0.6
+25,AE,5,20.0,1.0,0.5
 25,EA,0,40.0,0.0,0.0
 25,BF,0,40.0,0.0,0.0
 25,FB,0,40.0,0.0,0.0
@@ -1243,7 +1243,7 @@ timestamp,road_id,vehicle_count,current_speed_kmh,density,stress_level
 26,ON,0,40.0,0.0,0.0
 26,OP,0,40.0,0.0,0.0
 26,PO,0,40.0,0.0,0.0
-26,AE,6,20.0,1.2,0.6
+26,AE,5,20.0,1.0,0.5
 26,EA,0,40.0,0.0,0.0
 26,BF,0,40.0,0.0,0.0
 26,FB,0,40.0,0.0,0.0
@@ -1293,7 +1293,7 @@ timestamp,road_id,vehicle_count,current_speed_kmh,density,stress_level
 27,ON,0,40.0,0.0,0.0
 27,OP,0,40.0,0.0,0.0
 27,PO,0,40.0,0.0,0.0
-27,AE,6,20.0,1.2,0.6
+27,AE,5,20.0,1.0,0.5
 27,EA,0,40.0,0.0,0.0
 27,BF,0,40.0,0.0,0.0
 27,FB,0,40.0,0.0,0.0
@@ -1343,7 +1343,7 @@ timestamp,road_id,vehicle_count,current_speed_kmh,density,stress_level
 28,ON,0,40.0,0.0,0.0
 28,OP,0,40.0,0.0,0.0
 28,PO,0,40.0,0.0,0.0
-28,AE,6,20.0,1.2,0.6
+28,AE,5,20.0,1.0,0.5
 28,EA,0,40.0,0.0,0.0
 28,BF,0,40.0,0.0,0.0
 28,FB,0,40.0,0.0,0.0
@@ -1393,7 +1393,7 @@ timestamp,road_id,vehicle_count,current_speed_kmh,density,stress_level
 29,ON,0,40.0,0.0,0.0
 29,OP,0,40.0,0.0,0.0
 29,PO,0,40.0,0.0,0.0
-29,AE,6,20.0,1.2,0.6
+29,AE,5,20.0,1.0,0.5
 29,EA,0,40.0,0.0,0.0
 29,BF,0,40.0,0.0,0.0
 29,FB,0,40.0,0.0,0.0
@@ -1443,7 +1443,7 @@ timestamp,road_id,vehicle_count,current_speed_kmh,density,stress_level
 30,ON,0,40.0,0.0,0.0
 30,OP,0,40.0,0.0,0.0
 30,PO,0,40.0,0.0,0.0
-30,AE,6,20.0,1.2,0.6
+30,AE,5,20.0,1.0,0.5
 30,EA,0,40.0,0.0,0.0
 30,BF,0,40.0,0.0,0.0
 30,FB,0,40.0,0.0,0.0
@@ -1493,7 +1493,7 @@ timestamp,road_id,vehicle_count,current_speed_kmh,density,stress_level
 31,ON,0,40.0,0.0,0.0
 31,OP,0,40.0,0.0,0.0
 31,PO,0,40.0,0.0,0.0
-31,AE,6,20.0,1.2,0.6
+31,AE,5,20.0,1.0,0.5
 31,EA,0,40.0,0.0,0.0
 31,BF,0,40.0,0.0,0.0
 31,FB,0,40.0,0.0,0.0
@@ -1543,7 +1543,7 @@ timestamp,road_id,vehicle_count,current_speed_kmh,density,stress_level
 32,ON,0,40.0,0.0,0.0
 32,OP,0,40.0,0.0,0.0
 32,PO,0,40.0,0.0,0.0
-32,AE,6,20.0,1.2,0.6
+32,AE,5,20.0,1.0,0.5
 32,EA,0,40.0,0.0,0.0
 32,BF,0,40.0,0.0,0.0
 32,FB,0,40.0,0.0,0.0
@@ -1593,7 +1593,7 @@ timestamp,road_id,vehicle_count,current_speed_kmh,density,stress_level
 33,ON,0,40.0,0.0,0.0
 33,OP,0,40.0,0.0,0.0
 33,PO,0,40.0,0.0,0.0
-33,AE,6,20.0,1.2,0.6
+33,AE,5,20.0,1.0,0.5
 33,EA,0,40.0,0.0,0.0
 33,BF,0,40.0,0.0,0.0
 33,FB,0,40.0,0.0,0.0
@@ -1643,7 +1643,7 @@ timestamp,road_id,vehicle_count,current_speed_kmh,density,stress_level
 34,ON,0,40.0,0.0,0.0
 34,OP,0,40.0,0.0,0.0
 34,PO,0,40.0,0.0,0.0
-34,AE,6,20.0,1.2,0.6
+34,AE,5,20.0,1.0,0.5
 34,EA,0,40.0,0.0,0.0
 34,BF,0,40.0,0.0,0.0
 34,FB,0,40.0,0.0,0.0
@@ -1693,7 +1693,7 @@ timestamp,road_id,vehicle_count,current_speed_kmh,density,stress_level
 35,ON,0,40.0,0.0,0.0
 35,OP,0,40.0,0.0,0.0
 35,PO,0,40.0,0.0,0.0
-35,AE,6,20.0,1.2,0.6
+35,AE,5,20.0,1.0,0.5
 35,EA,0,40.0,0.0,0.0
 35,BF,0,40.0,0.0,0.0
 35,FB,0,40.0,0.0,0.0

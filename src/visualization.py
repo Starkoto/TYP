@@ -5,10 +5,6 @@ from src.network import TrafficNetwork
 
 
 def visualize_network(network: TrafficNetwork, title: str = "Traffic Network"):
-    """
-    Visualize the traffic network using NetworkX.
-    Roads shown with line thickness based on capacity.
-    """
     fig, ax = plt.subplots(figsize=(10, 8))
     G = nx.DiGraph()
 
@@ -54,14 +50,6 @@ def visualize_network(network: TrafficNetwork, title: str = "Traffic Network"):
 
 
 def visualize_network_with_traffic(network: TrafficNetwork, title: str = "Traffic Network"):
-    """
-    Visualize network with congestion shown by line thickness and dash pattern.
-    - Thickness: thicker = more vehicles relative to capacity
-    - Dash pattern: solid = free flow, increasingly dashed = more congested
-    - Labels show vehicle count / capacity
-    
-    Colorblind-friendly: uses thickness + dash pattern instead of green-to-red.
-    """
     fig, ax = plt.subplots(figsize=(10, 8))
     G = nx.DiGraph()
 
@@ -129,48 +117,3 @@ def visualize_network_with_traffic(network: TrafficNetwork, title: str = "Traffi
     ax.grid(True, alpha=0.2)
     plt.tight_layout()
     return fig, ax
-
-
-# Test it
-if __name__ == "__main__":
-    from src.network import Node, Road
-
-    network = TrafficNetwork()
-
-    node_a = Node("A", 0, 0)
-    node_b = Node("B", 100, 0)
-    node_c = Node("C", 200, 0)
-    node_d = Node("D", 100, 100)
-
-    network.add_node(node_a)
-    network.add_node(node_b)
-    network.add_node(node_c)
-    network.add_node(node_d)
-
-    road_ab = Road("AB", node_a, node_b, speed_limit_kmh=50, capacity=10)
-    road_bc = Road("BC", node_b, node_c, speed_limit_kmh=50, capacity=10)
-    road_ba = Road("BA", node_b, node_a, speed_limit_kmh=50, capacity=10)
-    road_cb = Road("CB", node_c, node_b, speed_limit_kmh=50, capacity=10)
-    road_ad = Road("AD", node_a, node_d, speed_limit_kmh=50, capacity=10)
-    road_dc = Road("DC", node_d, node_c, speed_limit_kmh=50, capacity=10)
-
-    network.add_road(road_ab)
-    network.add_road(road_bc)
-    network.add_road(road_ba)
-    network.add_road(road_cb)
-    network.add_road(road_ad)
-    network.add_road(road_dc)
-
-    # Add some fake traffic
-    class DummyVehicle:
-        def __init__(self, vid):
-            self.id = vid
-
-    for i in range(5):
-        road_ab.add_vehicle(DummyVehicle(f"v{i}"))
-    for i in range(10):
-        road_bc.add_vehicle(DummyVehicle(f"v{i}"))
-
-    fig, ax = visualize_network_with_traffic(network, "Test Network with Traffic")
-    plt.savefig("network_visualization.png", dpi=150)
-    print("Saved to network_visualization.png")

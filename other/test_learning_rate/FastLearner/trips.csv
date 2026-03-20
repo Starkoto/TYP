@@ -1,0 +1,16 @@
+driver_id,trip_number,start_node,goal_node,route_taken,total_trip_time,total_distance,average_speed,average_stress
+FastLearner,1,A,I,AB->BE->EF->FI,33.0,400.0,47.82,0.0655
+FastLearner,2,A,I,AB->BE->EF->FI,33.0,400.0,47.82,0.0655
+FastLearner,3,A,I,AD->DE->EF->FI,32.0,400.0,50.0,0.0
+FastLearner,4,A,I,AD->DE->EF->FI,32.0,400.0,50.0,0.0
+FastLearner,5,A,I,AD->DE->EF->FI,32.0,400.0,50.0,0.0
+FastLearner,6,A,I,AD->DE->EF->FI,32.0,400.0,50.0,0.0
+FastLearner,7,A,I,AD->DE->EF->FI,32.0,400.0,50.0,0.0
+FastLearner,8,A,I,AD->DE->EF->FI,32.0,400.0,50.0,0.0
+FastLearner,9,A,I,AD->DE->EF->FI,32.0,400.0,50.0,0.0
+FastLearner,10,A,I,AD->DE->EF->FI,32.0,400.0,50.0,0.0
+FastLearner,11,A,I,AD->DE->EF->FI,32.0,400.0,50.0,0.0
+FastLearner,12,A,I,AD->DE->EF->FI,32.0,400.0,50.0,0.0
+FastLearner,13,A,I,AD->DE->EF->FI,32.0,400.0,50.0,0.0
+FastLearner,14,A,I,AD->DE->EF->FI,32.0,400.0,50.0,0.0
+FastLearner,15,A,I,AD->DE->EF->FI,32.0,400.0,50.0,0.0
