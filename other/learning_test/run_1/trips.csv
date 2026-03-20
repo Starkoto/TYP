@@ -1,7 +1,0 @@
-driver_id,trip_number,start_node,goal_node,route_taken,total_trip_time,total_distance,average_speed,average_stress
-LearningDriver,1,A,C,AB->BC,16.0,200.0,50.0,0.0
-LearningDriver,2,C,A,CB->BA,16.0,200.0,50.0,0.0
-LearningDriver,3,A,C,AB->BC,16.0,200.0,50.0,0.0
-LearningDriver,4,C,A,CB->BA,16.0,200.0,50.0,0.0
-LearningDriver,5,A,C,AB->BC,16.0,200.0,50.0,0.0
-LearningDriver,6,C,A,CB->BA,16.0,200.0,50.0,0.0

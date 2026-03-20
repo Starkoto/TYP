@@ -1,9 +1,9 @@
 import unittest
 
-from network import Node, Road, TrafficNetwork
-from vehicle import Vehicle
-from pathfinding import AStar
-from driver import Driver
+from src.network import Node, Road, TrafficNetwork
+from src.vehicle import Vehicle
+from src.pathfinding import AStar
+from src.driver import Driver
 
 class TestNetwork(unittest.TestCase):
     
